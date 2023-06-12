@@ -21,12 +21,12 @@ class ContactForm extends React.Component {
   };
 
   render() {
-    const nameInputId = nanoid();
-    const phoneInputId = nanoid();
+    // const nameInputId = nanoid();
+    // const phoneInputId = nanoid();
 
     return (
-      <form className="css.formEditor" onSubmit={this.handleFormSubmit}>
-        <label htmlFor="nameInputId">
+      <form className={css.formEditor} onSubmit={this.handleFormSubmit}>
+        <label>
           Name
           <input
             type="text"
@@ -38,7 +38,7 @@ class ContactForm extends React.Component {
             onChange={this.handleChange}
           />
         </label>
-        <label htmlFor="phoneInputId">
+        <label>
           Phone
           <input
             type="tel"
