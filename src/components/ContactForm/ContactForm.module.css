@@ -1,0 +1,4 @@
+.formEditor {
+  display: flex;
+  flex-direction: column;
+}
