@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import css from './ContactForm.module.css';
 
 class ContactForm extends React.Component {
@@ -20,14 +21,12 @@ class ContactForm extends React.Component {
   };
 
   render() {
-    // const nameInputId = nanoid();
-    // const phoneInputId = nanoid();
-
     return (
       <form className={css.formEditor} onSubmit={this.handleFormSubmit}>
         <label>
           Name
           <input
+            className={css.inputArea}
             type="text"
             name="name"
             pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
@@ -40,6 +39,7 @@ class ContactForm extends React.Component {
         <label>
           Phone
           <input
+            className={css.inputArea}
             type="tel"
             name="number"
             pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
@@ -49,10 +49,18 @@ class ContactForm extends React.Component {
             onChange={this.handleChange}
           />
         </label>
-        <button type="submit">Add contact</button>
+        <button className={css.contactButton} type="submit">
+          Add contact
+        </button>
       </form>
     );
   }
 }
+
+ContactForm.propTypes = {
+  handleFormSubmit: PropTypes.func.isRequired,
+  onSubmit: PropTypes.func.isRequired,
+  handleChange: PropTypes.func.isRequired,
+};
 
 export default ContactForm;

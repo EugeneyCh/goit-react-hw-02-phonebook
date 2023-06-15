@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import ListContacts from './ListContacts/ListContacts';
 import ContactForm from './ContactForm/ContactForm';
 import Filter from './Filter/Filter';
@@ -68,7 +69,7 @@ export class App extends Component {
       <div className={css.container}>
         <h1>Phonebook</h1>
         <ContactForm onSubmit={this.formSubmitHandler} />
-        <div>
+        <div className={css.contactList}>
           <h2>Contacts</h2>
           <Filter value={filter} onChange={this.changeFilter} />
           <ListContacts
@@ -84,5 +85,15 @@ export class App extends Component {
     );
   }
 }
+
+App.propTypes = {
+  contacts: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+      number: PropTypes.string.isRequired,
+    })
+  ),
+};
 
 export default App;
